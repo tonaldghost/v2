@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Portal</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'pages/style.css' %}" type="text/css">
+    </head>
+
+    <body>
+        <header>
+        {% if request.user.is_authenticated %}
+            <h4>Welcome {{request.user |capfirst|title}}</h4>
+        {% endif %}
+        </header>
+
+        {% if request.user.is_authenticated %}
+            {% include "nav.html" %}
+        {% else %}
+            {% include "registration/nav_register.html" %}
+        {% endif %}
+
+        {% block content %}
+            this gets replaced with main content of respective 
+            page when using keyword content
+        {% endblock %}
+    </body>
+
+</html>
