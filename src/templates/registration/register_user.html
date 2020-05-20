@@ -19,6 +19,7 @@
                             {{field}}
                         </div>
                     {% endfor %}
+                    <p>{{ form.password.errors.as_text }}</p>
                     <button id="register-button" type='submit' value='Save'>Register</button>
                     <button id="already-registered" action="{% url 'home' %}">Already registered?</button>
                 </form>
