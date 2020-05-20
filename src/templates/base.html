@@ -2,28 +2,36 @@
 <html>
 
     <head>
-        <title>Portal</title>
+        <title>Portal V2</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'pages/style.css' %}" type="text/css">
     </head>
 
     <body>
         <header>
-        {% if request.user.is_authenticated %}
-            <h4>Welcome {{request.user |capfirst|title}}</h4>
-        {% endif %}
+            <img id="nav-logo" src="{% static 'assets/portal-logo.png' %}">
+
+            <div id="navbar">
+                {% if request.user.is_authenticated %}
+                    {% include "nav.html" %}
+                {% else %}
+                    {% include "registration/nav_register.html" %}
+                {% endif %}
+            </div>
+            
+            <div id="welcome-text">
+                {% if request.user.is_authenticated %}
+                    <h4>{{request.user |capfirst|title}}</h4>
+                {% endif %}
+            </div>
         </header>
 
-        {% if request.user.is_authenticated %}
-            {% include "nav.html" %}
-        {% else %}
-            {% include "registration/nav_register.html" %}
-        {% endif %}
-
-        {% block content %}
-            this gets replaced with main content of respective 
-            page when using keyword content
-        {% endblock %}
+        <main>
+            {% block content %}
+                this gets replaced with main content of respective 
+                page when using keyword content
+            {% endblock %}
+        </main>
     </body>
 
 </html>
