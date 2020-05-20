@@ -8,12 +8,13 @@ def register(request):
     if request.method == 'POST':
         form = UserAccountForm(request.POST)
         if form.is_valid():
+            form.clean()
             email = form.cleaned_data['account_email']
             form.save()
             account_mail_sender(email, "confirmation")
             return redirect('/')
     
-    else:
+    elif request.method == 'GET':
         form = UserAccountForm()
         context = {
             'form': form

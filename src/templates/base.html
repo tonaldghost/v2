@@ -4,7 +4,9 @@
     <head>
         <title>Portal V2</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'pages/style.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'pages/base.css' %}" type="text/css">
+        {% block extracss %}
+        {% endblock %}
     </head>
 
     <body>

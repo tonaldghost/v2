@@ -54,7 +54,7 @@ header li {
   }
 
 header li :hover {
-    background-color: #EE682A;
+    color: #EE682A;
   }
 
 #welcome-text {
