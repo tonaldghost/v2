@@ -1,9 +1,21 @@
 from django import forms
+
+
 from .models import UserAccount
 
 class UserAccountForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-    confirm_password=forms.CharField(widget=forms.PasswordInput())
+    first_name = forms.CharField(max_length=100,
+                           widget= forms.TextInput
+                           (attrs={'placeholder':'FIRST NAME'}))
+    last_name = forms.CharField(max_length=100,
+                           widget= forms.TextInput
+                           (attrs={'placeholder':'LAST NAME'}))
+    account_email=forms.EmailField(max_length=256,
+                           widget= forms.TextInput
+                           (attrs={'placeholder':'EMAIL'}))
+    password = forms.CharField(max_length=128, widget=forms.PasswordInput(attrs={'placeholder':'PASSWORD'})
+                           )
+    confirm_password=forms.CharField(max_length=128, widget=forms.PasswordInput(attrs={'placeholder':'CONFIRM PASWORD'}))
     class Meta:
         model = UserAccount
         fields = [
@@ -15,16 +27,12 @@ class UserAccountForm(forms.ModelForm):
         ]
 
     #check account does not exist already - throw validation error and handle it
-    
-    def clean(self):
-        cleaned_data = super(UserAccountForm, self).clean()
-        password = cleaned_data.get("password")
-        confirm_password = cleaned_data.get("confirm_password")
-        # account_email = cleaned_data.get("account_email")
+
+    def clean_password(self, *args, **kwargs):
+        password = self.cleaned_data.get("password")
+        confirm_password = self.cleaned_data.get("confirm_password")
 
         if password != confirm_password:
-            raise forms.ValidationError(
-                'Passwords do not match.',
-                code='1')
-        
-        return cleaned_data
+            raise forms.ValidationError("Passwords must match.", code=1)
+        else:
+            return password

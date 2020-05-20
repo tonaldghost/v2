@@ -38,11 +38,11 @@ def account_mail_sender(client, email_type):
     #due to using the SSL connection there is no need no for 
     #extended hello func like ehlo() - now is secure from the start (port changes from ehlo 587 to ssl 465)
    
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login(EMAIL_ADDRESS, EMAIL_PASS)
-        smtp.send_message(msg)
-        smtp.quit()
-        print("MESSAGE SENT AND CLOSED CONNECTION")
+    # with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    #     smtp.login(EMAIL_ADDRESS, EMAIL_PASS)
+    #     smtp.send_message(msg)
+    #     smtp.quit()
+    print("COMMENTED OUT BUT MESSAGE SENT")
 
 
 #*****************************
