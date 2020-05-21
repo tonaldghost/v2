@@ -14,14 +14,11 @@
             <div id="register-form">
                 <form method='post'> 
                     {% csrf_token %}
-                    {% for field in form %}
                         <div class="register-field">
-                            {{field}}
+                            {{form.as_p}}
                         </div>
-                    {% endfor %}
-                    <p>{{ form.password.errors.as_text }}</p>
-                    <button id="register-button" type='submit' value='Save'>Register</button>
-                    <button id="already-registered" action="{% url 'home' %}">Already registered?</button>
+                    <button id="register-button" type='submit'>Register</button>
+                    <button id="already-registered" action="{% url 'home' %}">Already Registered?</button>
                 </form>
             </div>
         {% endblock  %}}

@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django_countries',
 
     #own
-    'profiles'
+    'profiles.apps.ProfilesConfig'
 ]
 
 MIDDLEWARE = [

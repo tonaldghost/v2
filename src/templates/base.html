@@ -29,6 +29,13 @@
         </header>
 
         <main>
+            {% if messages %}
+                {% for message in messages %}
+                    <div>
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
             {% block content %}
                 this gets replaced with main content of respective 
                 page when using keyword content

@@ -7,7 +7,7 @@ from profiles.views import register
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
-    path('register', register, name='register')
+    path('register', register, name='register'),
 ]
 
 #refactor out the urls that should be in the specific app they belong too
