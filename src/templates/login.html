@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        {% block extracss %}
+            <link rel="stylesheet" href="{% static 'pages/login_form.css' %}" type="text/css">
+        {% endblock %}
+    </head>
+
+    <body>
+        {% block content %}
+            <div id="login-form">
+                <form method='post'> 
+                    {% csrf_token %}
+                        <div class="login-field">
+                            {{form.as_p}}
+                        </div>
+                    <button id="login-button" type='submit'>Login</button>
+                </form>
+                <button id="need-account" href="{% url 'register' %}">Need an Account?</button>
+            </div>
+        {% endblock  %}}
+
+    </body>
+
+</html>

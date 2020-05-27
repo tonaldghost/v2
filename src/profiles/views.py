@@ -15,9 +15,10 @@ def register(request):
             messages.success(
                 request, f'You should receive an email at {email} shortly to confirm your account.')
             account_mail_sender(email, "confirmation")
-            return redirect('home')
+            return redirect('login')
 
     else:
         form = UserRegisterForm()
 
     return render(request, 'registration/register_user.html', {'form': form})
+    

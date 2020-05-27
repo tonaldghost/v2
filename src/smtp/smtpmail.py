@@ -9,7 +9,7 @@ EMAIL_PASS = os.environ.get('SMTPPASS')
 def account_mail_sender(client, email_type):
 
     #!!
-    #throw error if user passes anything 
+    #throw error if user passes anything
     #other than confirmation, otp or forgot_password as the email type.
 
     #client
