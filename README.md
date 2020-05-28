@@ -14,3 +14,4 @@ Also for developers I would advise adding a python linting to Pylint Args.
     
     This will also assist in conforming your code to pep guidelines which is great for future development.
 
+Allows register and ... on login now

@@ -11,7 +11,9 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('register', register, name='register'),
     path('login', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout', auth_views.LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout')
+    path('logout', auth_views.LogoutView.as_view(),
+         {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
+    path('eventbuild/', include('eventbuild.urls'))
 ]
 
 #refactor out the urls that should be in the specific app they belong too
