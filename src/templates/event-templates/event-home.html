@@ -5,13 +5,14 @@
 
     <head>
         {% block extracss %}
+        <script type="text/javascript" src="{% static 'utils/events.js' %}"></script>
         {% endblock %}
     </head>
 
     <body>
         {% block content %}
-            <button>Generate Event Template</button>
-        {% endblock  %}}
+            <button id="standard-button" onclick="generateJson()">Generate Event Template</button>
+        {% endblock  %}
 
     </body>
 
